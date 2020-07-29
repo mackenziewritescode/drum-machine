@@ -1,12 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;0,800;0,900;1,300;1,400;1,700;1,800;1,900&display=swap");
+
 #wrapper {
   width: 100%;
-  #drum-machine {
-    width: 80%;
-    background: blue;
-  }
-}
+  height: 100%;
+  position: absolute;
 
-#pad-wrap {
-  width: 60%;
-  background: red;
+  #drum-machine {
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    background: orangered;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    #pad-wrap {
+      width: 400px;
+      height: 400px;
+      background: lightgrey;
+      margin: auto 0 auto 50px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .pad {
+        width: 30%;
+        height: 30%;
+        border: 2px solid black;
+        border-radius: 10px;
+        margin: auto;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+        line-height: 0;
+
+        .letter {
+          font-size: 36px;
+        }
+      }
+    }
+  }
 }
