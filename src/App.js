@@ -4,12 +4,14 @@ import "./App.css";
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      padName: "------",
+    };
     this.handlePad = this.handlePad.bind(this);
   }
 
   handlePad(event) {
-    console.log(event.target.name);
+    this.setState({ padName: event.target.name }); // FIX THIS
   }
 
   render() {
@@ -54,6 +56,7 @@ class App extends Component {
               <p>clap</p>
             </div>
           </div>
+          <div id="display">{this.state.padName}</div>
         </div>
       </div>
     );
