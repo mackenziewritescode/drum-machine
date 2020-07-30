@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   handlePad(event) {
-    this.setState({ padName: event.target.name }); // FIX THIS
+    this.setState({ padName: event.target.id }); // FIX THIS
   }
 
   render() {
@@ -19,7 +19,7 @@ class App extends Component {
       <div id="wrapper">
         <div id="drum-machine">
           <div id="pad-wrap">
-            <div className="pad" name="pad-1" onMouseDown={this.handlePad}>
+            <div className="pad" id="Pad 1" onMouseDown={this.handlePad}>
               <p className="letter">Q</p>
               <p>clap</p>
             </div>
