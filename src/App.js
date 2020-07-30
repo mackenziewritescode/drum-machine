@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
+import Pad1 from "./audio/Clap.wav";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       padName: "------",
+      clap: new Audio(Pad1),
     };
     this.handlePad = this.handlePad.bind(this);
   }
 
   handlePad(event) {
-    this.setState({ padName: event.target.id }); // FIX THIS
+    this.setState({ padName: event.target.id });
+    let track = new Audio(Pad1);
+    track.play();
   }
 
   render() {
@@ -19,7 +23,7 @@ class App extends Component {
       <div id="wrapper">
         <div id="drum-machine">
           <div id="pad-wrap">
-            <div className="pad" id="Pad 1" onMouseDown={this.handlePad}>
+            <div className="pad" id="Pad1" onMouseDown={this.handlePad}>
               <p className="letter">Q</p>
               <p>clap</p>
             </div>
