@@ -72,5 +72,6 @@
 
 #wrapper #drum-machine #pad-wrap .pad .letter {
   font-size: 36px;
+  text-transform: uppercase;
 }
 /*# sourceMappingURL=App.css.map */
