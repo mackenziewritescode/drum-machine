@@ -5,7 +5,7 @@ function Pad(props) {
     <div
       className="pad"
       id={props.item.id}
-      onMouseDown={() => props.handlePad(props.item.id)}
+      onMouseDown={() => props.handlePad(props.item.index)}
     >
       <p className="letter">{props.item.letter}</p>
       <p>{props.item.name}</p>

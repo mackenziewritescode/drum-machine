@@ -74,4 +74,8 @@
   font-size: 36px;
   text-transform: uppercase;
 }
+
+#wrapper #drum-machine #pad-wrap #pad0 {
+  background: red;
+}
 /*# sourceMappingURL=App.css.map */
