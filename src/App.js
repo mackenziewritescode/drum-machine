@@ -6,9 +6,12 @@ import padsArr from "./padsArr";
 class App extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      padClass: "pad",
+    };
     this.handlePad = this.handlePad.bind(this);
     this.handleKey = this.handleKey.bind(this);
+    this.handlePadClass = this.handlePadClass.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +28,16 @@ class App extends Component {
       if (event.key === padsArr[i].letter) {
         let track = new Audio(padsArr[i].audio);
         track.play();
+        //this.setState({ padClass: "padActive" });
+        //setTimeout(this.handlePadClass, 200);
+        console.log(padsArr[i].id);
+        padsArr[i].id = "padActive";
       }
     }
+  }
+
+  handlePadClass() {
+    this.setState({ padClass: "pad" });
   }
 
   handlePad(index) {
@@ -43,6 +54,7 @@ class App extends Component {
         letter={item.letter}
         name={item.name}
         handlePad={this.handlePad}
+        padClass={this.state.padClass}
       />
     ));
 

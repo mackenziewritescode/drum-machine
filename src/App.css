@@ -44,7 +44,7 @@
       flex-wrap: wrap;
 }
 
-#wrapper #drum-machine #pad-wrap .pad {
+#wrapper #drum-machine #pad-wrap .pad, #wrapper #drum-machine #pad-wrap .padActive, #wrapper #drum-machine #pad-wrap #padActive .padActive {
   width: 30%;
   height: 30%;
   border: 2px solid black;
@@ -68,14 +68,21 @@
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   line-height: 0;
+  background: wheat;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
-#wrapper #drum-machine #pad-wrap .pad .letter {
+#wrapper #drum-machine #pad-wrap .pad .letter, #wrapper #drum-machine #pad-wrap .padActive .letter, #wrapper #drum-machine #pad-wrap #padActive .padActive .letter {
   font-size: 36px;
   text-transform: uppercase;
 }
 
-#wrapper #drum-machine #pad-wrap #pad0 {
+#wrapper #drum-machine #pad-wrap .padActive {
+  background: red;
+}
+
+#wrapper #drum-machine #pad-wrap #padActive .padActive {
   background: red;
 }
 /*# sourceMappingURL=App.css.map */

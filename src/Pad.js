@@ -3,8 +3,8 @@ import React from "react";
 function Pad(props) {
   return (
     <div
-      className="pad"
       id={props.item.id}
+      className={props.padClass}
       onMouseDown={() => props.handlePad(props.item.index)}
     >
       <p className="letter">{props.item.letter}</p>
@@ -14,7 +14,3 @@ function Pad(props) {
 }
 
 export default Pad;
-
-/*
-onMouseDown={this.handlePad}
-*/
