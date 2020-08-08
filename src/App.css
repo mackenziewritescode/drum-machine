@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-#wrapper #drum-machine {
+#wrapper #drumMachine {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,11 +28,11 @@
           transform: translate(-50%, -50%);
 }
 
-#wrapper #drum-machine #pad-wrap {
+#wrapper #drumMachine #padWrap {
   width: 400px;
   height: 400px;
   background: lightgrey;
-  margin: auto 0 auto 50px;
+  margin: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -44,7 +44,7 @@
       flex-wrap: wrap;
 }
 
-#wrapper #drum-machine #pad-wrap .pad, #wrapper #drum-machine #pad-wrap .padActive, #wrapper #drum-machine #pad-wrap #padActive .padActive {
+#wrapper #drumMachine #padWrap .pad, #wrapper #drumMachine #padWrap .padActive {
   width: 30%;
   height: 30%;
   border: 2px solid black;
@@ -69,20 +69,63 @@
   font-weight: 300;
   line-height: 0;
   background: wheat;
-  -webkit-transition: background-color 0.2s ease;
-  transition: background-color 0.2s ease;
 }
 
-#wrapper #drum-machine #pad-wrap .pad .letter, #wrapper #drum-machine #pad-wrap .padActive .letter, #wrapper #drum-machine #pad-wrap #padActive .padActive .letter {
+#wrapper #drumMachine #padWrap .pad .letter, #wrapper #drumMachine #padWrap .padActive .letter {
   font-size: 36px;
   text-transform: uppercase;
 }
 
-#wrapper #drum-machine #pad-wrap .padActive {
+#wrapper #drumMachine #padWrap .padActive {
   background: red;
 }
 
-#wrapper #drum-machine #pad-wrap #padActive .padActive {
-  background: red;
+#wrapper #drumMachine #controlWrap {
+  background-color: lightgreen;
+  width: 400px;
+  margin: 50px;
+}
+
+#wrapper #drumMachine #controlWrap #title {
+  width: 100%;
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+}
+
+#wrapper #drumMachine #controlWrap #trackWrap {
+  background-color: orange;
+  width: 50%;
+  display: float;
+  float: left;
+}
+
+#wrapper #drumMachine #controlWrap #padDisplay {
+  background-color: yellow;
+  width: 50%;
+  display: float;
+  float: right;
+}
+
+#wrapper #drumMachine #controlWrap #volume {
+  background-color: yellowgreen;
+  width: 50%;
+  display: float;
+  float: right;
+}
+
+@media (max-width: 900px) {
+  #wrapper #drumMachine {
+    width: 450px;
+    height: 950px;
+    display: inline-block;
+  }
+  #wrapper #drumMachine #padWrap {
+    margin: 25px;
+  }
+  #wrapper #drumMachine #controlWrap {
+    margin: 25px;
+    height: 400px;
+  }
 }
 /*# sourceMappingURL=App.css.map */

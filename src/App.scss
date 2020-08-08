@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
 
-  #drum-machine {
+  #drumMachine {
     display: flex;
     width: 1000px;
     height: 500px;
@@ -20,11 +20,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    #pad-wrap {
+    #padWrap {
       width: 400px;
       height: 400px;
       background: lightgrey;
-      margin: auto 0 auto 50px;
+      margin: 50px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -45,7 +45,7 @@
         font-weight: 300;
         line-height: 0;
         background: wheat;
-        transition: background-color 0.2s ease;
+        //transition: background-color 0.2s ease;
         .letter {
           font-size: 36px;
           text-transform: uppercase;
@@ -55,11 +55,54 @@
         @extend .pad;
         background: red;
       }
-      #padActive {
-        .padActive {
-          @extend .pad;
-          background: red;
-        }
+    }
+
+    #controlWrap {
+      background-color: lightgreen;
+      width: 400px;
+      margin: 50px;
+
+      #title {
+        width: 100%;
+        margin: 0;
+        display: inline-block;
+        text-align: center;
+      }
+
+      #trackWrap {
+        background-color: orange;
+        width: 50%;
+        display: float;
+        float: left;
+      }
+
+      #padDisplay {
+        background-color: yellow;
+        width: 50%;
+        display: float;
+        float: right;
+      }
+      #volume {
+        background-color: yellowgreen;
+        width: 50%;
+        display: float;
+        float: right;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    #drumMachine {
+      width: 450px;
+      height: 950px;
+      display: inline-block;
+
+      #padWrap {
+        margin: 25px;
+      }
+      #controlWrap {
+        margin: 25px;
+        height: 400px;
       }
     }
   }
