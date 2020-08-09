@@ -6,17 +6,23 @@ const tracksArr = [
   {
     index: 0,
     id: "track0",
+    name: "None",
+    audio: "",
+  },
+  {
+    index: 1,
+    id: "track0",
     name: "Chill Synth",
     audio: chillSynth,
   },
   {
-    index: 1,
+    index: 2,
     id: "track1",
     name: "Lo-Fi Dream",
     audio: loFiDream,
   },
   {
-    index: 2,
+    index: 3,
     id: "track2",
     name: "Mellow Groove",
     audio: mellowGroove,

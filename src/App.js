@@ -23,13 +23,16 @@ class PadDisplay extends Component {
   }
 
   render() {
-    //var activePadName = padsArr.filter(
-    //   (pad) => pad.id === this.props.activePad
-    // )[0].name;
+    // this returns the name of the active pad if state.activePad is not empty
+    const activePadName =
+      this.props.activePad === ""
+        ? "------"
+        : padsArr.filter((pad) => pad.id === this.props.activePad)[0].name;
+
     return (
       <div id="padDisplay">
-        <h3>Current Pad</h3>
-        {/* <p>{activePadName}</p> */}
+        <h3>Most Recent Pad</h3>
+        <p>{activePadName}</p>
       </div>
     );
   }
@@ -74,19 +77,20 @@ class Pad extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e) {
-    this.props.handlePad(e.target.id);
-    console.log(e.target.id);
+  handleClick(id) {
+    this.props.handlePad(id);
+    console.log(id);
   }
 
   render() {
     const item = this.props.item;
 
-    const padClass =
-      this.props.item.id === this.props.activePad ? "padActive" : "pad";
-
     return (
-      <div className={padClass} id={item.id} onClick={this.handleClick}>
+      <div
+        className="pad"
+        id={item.id}
+        onMouseDown={() => this.handleClick(item.id)}
+      >
         <p className="letter">{item.letter}</p>
         <p>{item.name}</p>
       </div>
@@ -102,12 +106,10 @@ class PadWrap extends Component {
     const pads = padsArr.map((item) => (
       <Pad
         item={item}
-        key={item.index}
+        key={item.id}
         id={item.id}
         letter={item.letter}
         name={item.name}
-        audio={item.audio}
-        activePad={this.props.activePad}
         handlePad={this.props.handlePad}
       />
     ));
@@ -120,25 +122,39 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      activePad: "pad0",
+      activePad: "",
       activeTrack: "track0",
       volumeVal: 100,
     };
     this.handlePad = this.handlePad.bind(this);
+    this.animateButton = this.animateButton.bind(this);
   }
 
   handlePad(id) {
     this.setState({ activePad: id });
+    this.animateButton(id);
+    for (let i = 0; i < padsArr.length; i++) {
+      if (padsArr[i].id === id) {
+        let track = new Audio(padsArr[i].audio);
+        track.play();
+      }
+    }
+  }
+
+  animateButton(id) {
+    document
+      .getElementById(id)
+      .animate([{ background: "orange" }, { background: "wheat" }], {
+        duration: 400,
+        iterations: 1,
+      });
   }
 
   render() {
     return (
       <div id="wrapper">
         <div id="drumMachine">
-          <PadWrap
-            activePad={this.state.activePad}
-            handlePad={this.handlePad}
-          />
+          <PadWrap handlePad={this.handlePad} />
           <div id="controlWrap">
             <h2 id="title">Drum Machine</h2>
             <TrackWrap activeTrack={this.state.activeTrack} />

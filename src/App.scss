@@ -45,15 +45,10 @@
         font-weight: 300;
         line-height: 0;
         background: wheat;
-        //transition: background-color 0.2s ease;
         .letter {
           font-size: 36px;
           text-transform: uppercase;
         }
-      }
-      .padActive {
-        @extend .pad;
-        background: red;
       }
     }
 
