@@ -44,7 +44,7 @@
       flex-wrap: wrap;
 }
 
-#wrapper #drumMachine #padWrap .pad, #wrapper #drumMachine #padWrap .padActive {
+#wrapper #drumMachine #padWrap .pad {
   width: 30%;
   height: 30%;
   border: 2px solid black;
@@ -71,13 +71,9 @@
   background: wheat;
 }
 
-#wrapper #drumMachine #padWrap .pad .letter, #wrapper #drumMachine #padWrap .padActive .letter {
+#wrapper #drumMachine #padWrap .pad .letter {
   font-size: 36px;
   text-transform: uppercase;
-}
-
-#wrapper #drumMachine #padWrap .padActive {
-  background: red;
 }
 
 #wrapper #drumMachine #controlWrap {
