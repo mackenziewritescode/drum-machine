@@ -11,7 +11,7 @@ class Volume extends Component {
     return (
       <div id="volume">
         <h3>Volume</h3>
-        <p>---i'm a volume slider---</p>
+        <p>---||---</p>
       </div>
     )
   }
@@ -32,7 +32,7 @@ class PadDisplay extends Component {
     return (
       <div id="padDisplay">
         <h3>Most Recent Pad</h3>
-        <p>{activePadName}</p>
+        <p id="padDisplayWindow">{activePadName}</p>
       </div>
     )
   }
@@ -41,10 +41,23 @@ class PadDisplay extends Component {
 class Track extends Component {
   constructor(props) {
     super(props)
+    this.handleTrackClick = this.handleTrackClick.bind(this)
   }
-  // display the name of the track in state
+
+  handleTrackClick(id) {
+    this.props.handleTrack(id)
+    console.log(id)
+  }
+
   render() {
-    return <div>{this.props.item.name}</div>
+    const item = this.props.item
+
+    return (
+      <div className="track" onClick={() => this.handleTrackClick(item.id)}>
+        <div className="trackToggle" />
+        <p className="trackName">{this.props.item.name}</p>
+      </div>
+    )
   }
 }
 
@@ -61,11 +74,12 @@ class TrackWrap extends Component {
         name={item.name}
         audio={item.audio}
         activeTrack={this.props.activeTrack}
+        handleTrack={this.props.handleTrack}
       />
     ))
     return (
       <div id="trackWrap">
-        <h3>Background Track</h3>
+        <h3 id="trackTitle">Background Track</h3>
         {tracks}
       </div>
     )
@@ -79,7 +93,7 @@ class Pad extends Component {
   }
 
   handleClick(id) {
-    this.props.handlePadClick(id)
+    this.props.handlePad(id)
     console.log(id)
   }
 
@@ -111,7 +125,7 @@ class PadWrap extends Component {
         id={item.id}
         letter={item.letter}
         name={item.name}
-        handlePadClick={this.props.handlePadClick}
+        handlePad={this.props.handlePad}
       />
     ))
 
@@ -127,9 +141,10 @@ class App extends Component {
       activeTrack: "track0",
       volumeVal: 100,
     }
-    this.handlePadClick = this.handlePadClick.bind(this)
+    this.handlePad = this.handlePad.bind(this)
     this.handleKey = this.handleKey.bind(this)
     this.animatePad = this.animatePad.bind(this)
+    this.handleTrack = this.handleTrack.bind(this)
   }
 
   // when a key is pressed, run handleKey()
@@ -154,7 +169,7 @@ class App extends Component {
   }
 
   // if a pad is clicked, set state and activate pad
-  handlePadClick(id) {
+  handlePad(id) {
     this.setState({ activePad: id })
     this.animatePad(id)
     for (let i = 0; i < padsArr.length; i++) {
@@ -169,20 +184,35 @@ class App extends Component {
   animatePad(id) {
     document
       .getElementById(id)
-      .animate([{ background: "orange" }, { background: "wheat" }], {
+      .animate([{ background: "orangered" }, { background: "white" }], {
         duration: 400,
         iterations: 1,
       })
+  }
+
+  handleTrack(id) {
+    this.setState({ activeTrack: id })
+    for (let i = 0; i < tracksArr.length; i++) {
+      if (tracksArr[i].id === "track0") {
+        console.log("stop")
+      } else if (tracksArr[i].id === id) {
+        let track = new Audio(tracksArr[i].audio)
+        track.play()
+      }
+    }
   }
 
   render() {
     return (
       <div id="wrapper">
         <div id="drumMachine">
-          <PadWrap handlePadClick={this.handlePadClick} />
+          <PadWrap handlePad={this.handlePad} />
           <div id="controlWrap">
             <h2 id="title">Drum Machine</h2>
-            <TrackWrap activeTrack={this.state.activeTrack} />
+            <TrackWrap
+              activeTrack={this.state.activeTrack}
+              handleTrack={this.handleTrack}
+            />
             <PadDisplay activePad={this.state.activePad} />
             <Volume volumeVal={this.state.volumeVal} />
           </div>
