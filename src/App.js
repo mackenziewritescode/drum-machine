@@ -170,7 +170,7 @@ function PadWrap(props) {
       id={item.id}
       letter={item.letter}
       name={item.name}
-      handlePad={this.props.handlePad}
+      handlePad={props.handlePad}
     />
   ));
 
