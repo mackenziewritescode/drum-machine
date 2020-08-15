@@ -30,25 +30,19 @@ class Volume extends Component {
   }
 }
 
-class PadDisplay extends Component {
-  constructor(props) {
-    super(props);
-  }
+function PadDisplay(props) {
+  // returns the name of the active pad if state.activePad is not empty
+  const activePadName =
+    props.activePad === ""
+      ? "------"
+      : padsArr.filter((pad) => pad.id === props.activePad)[0].name;
 
-  render() {
-    // returns the name of the active pad if state.activePad is not empty
-    const activePadName =
-      this.props.activePad === ""
-        ? "------"
-        : padsArr.filter((pad) => pad.id === this.props.activePad)[0].name;
-
-    return (
-      <div id="padDisplay">
-        <h3>Most Recent Pad</h3>
-        <p id="padDisplayWindow">{activePadName}</p>
-      </div>
-    );
-  }
+  return (
+    <div id="padDisplay">
+      <h3>Most Recent Pad</h3>
+      <p id="padDisplayWindow">{activePadName}</p>
+    </div>
+  );
 }
 
 class Track extends Component {
@@ -76,6 +70,7 @@ class Track extends Component {
 }
 
 class TrackPlayer extends Component {
+  // eslint-disable-next-line
   constructor(props) {
     super(props);
   }
@@ -167,24 +162,19 @@ class Pad extends Component {
   }
 }
 
-class PadWrap extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const pads = padsArr.map((item) => (
-      <Pad
-        item={item}
-        key={item.id}
-        id={item.id}
-        letter={item.letter}
-        name={item.name}
-        handlePad={this.props.handlePad}
-      />
-    ));
+function PadWrap(props) {
+  const pads = padsArr.map((item) => (
+    <Pad
+      item={item}
+      key={item.id}
+      id={item.id}
+      letter={item.letter}
+      name={item.name}
+      handlePad={this.props.handlePad}
+    />
+  ));
 
-    return <div id="padWrap">{pads}</div>;
-  }
+  return <div id="padWrap">{pads}</div>;
 }
 
 class App extends Component {
