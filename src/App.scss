@@ -23,12 +23,6 @@ $main-font: "Poppins", sans-serif;
     width: 1000px;
     height: 500px;
     background: rgb(162, 216, 238);
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -41,6 +35,12 @@ $main-font: "Poppins", sans-serif;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+      -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+      user-select: none;
 
       .pad {
         width: 30%;
@@ -74,8 +74,8 @@ $main-font: "Poppins", sans-serif;
         margin: 0;
         display: inline-block;
         text-align: center;
-        margin-bottom: 20px;
-        font-size: 40px;
+        margin-bottom: 10px;
+        font-size: 50px;
         font-weight: 300;
         font-style: italic;
       }
@@ -90,17 +90,19 @@ $main-font: "Poppins", sans-serif;
           display: flex;
           font-size: 18px;
           margin-bottom: 20px;
+          cursor: pointer;
 
           .trackToggle {
-            width: 12px;
-            height: 12px;
-            border-radius: 10px;
-            background-color: black;
-            border: 4px solid grey;
+            width: 13px;
+            height: 13px;
+            border-radius: 99px;
+            background-color: rgb(59, 59, 59);
+            border: 3px solid rgb(134, 134, 134);
             margin: auto 10px auto 5px;
           }
 
           .trackName {
+            color: white;
             margin: 0;
           }
         }
@@ -114,13 +116,13 @@ $main-font: "Poppins", sans-serif;
         margin-bottom: 40px;
 
         #padDisplayWindow {
-          background-color: rgb(255, 159, 49);
+          background-color: #ffcd29;
           margin: auto;
           padding: 15px;
           width: 120px;
-          border: 3px solid rgb(83, 83, 83);
+          border: 3px solid rgb(134, 134, 134);
           border-radius: 5px;
-          color: rgb(114, 79, 39);
+          color: #8f7b38;
           font-family: "VT323", monospace;
           font-size: 30px;
           text-transform: uppercase;
@@ -131,6 +133,29 @@ $main-font: "Poppins", sans-serif;
         width: 50%;
         display: float;
         float: right;
+
+        #volumeSlider {
+          -webkit-appearance: none;
+          width: 80%;
+          height: 6px;
+          background: rgb(24, 24, 24);
+          border-radius: 3px;
+        }
+        #volumeSlider::-moz-range-thumb {
+          width: 12px;
+          height: 28px;
+          background: grey;
+          border: 3px solid rgb(53, 53, 53);
+          border-radius: 3px;
+        }
+        #volumeSlider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          width: 12px;
+          height: 28px;
+          background: grey;
+          border: 3px solid rgb(53, 53, 53);
+          border-radius: 3px;
+        }
       }
     }
   }
