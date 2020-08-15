@@ -170,7 +170,35 @@ html {
     }
   }
 
+  #footer {
+    color: rgb(119, 119, 119);
+    text-align: center;
+    margin: auto;
+    bottom: 0%;
+    position: fixed;
+    width: 100%;
+
+    .footer-link {
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+    }
+  }
+
   @media (max-width: 900px) {
+    html {
+      background: url(bg.jpg) no-repeat center center fixed;
+      -webkit-background-size: none;
+      -moz-background-size: none;
+      -o-background-size: none;
+      background-size: none;
+    }
+
+    #footer {
+      position: absolute;
+      margin-left: 30px;
+      bottom: 0%;
+      top: 1000px;
+    }
     #drumMachine {
       width: 450px;
       height: 880px;
@@ -187,8 +215,16 @@ html {
     }
   }
   @media (max-width: 500px) {
+    #footer {
+      position: absolute;
+      max-width: 400px;
+      margin-left: 30px;
+      bottom: 0%;
+      top: 800px;
+    }
+
     #drumMachine {
-      display: inline;
+      display: inline-block;
       position: absolute;
       top: 0;
       left: 0;
@@ -196,6 +232,7 @@ html {
       border: none;
       border-radius: 0;
       background: rgba(0, 0, 0, 0);
+      height: 800px;
 
       #padWrap {
         width: 300px;

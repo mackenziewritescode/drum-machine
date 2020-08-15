@@ -194,7 +194,31 @@ html {
   border-radius: 3px;
 }
 
+#wrapper #footer {
+  color: #777777;
+  text-align: center;
+  margin: auto;
+  bottom: 0%;
+  position: fixed;
+  width: 100%;
+}
+
+#wrapper #footer .footer-link {
+  text-decoration: none;
+  color: white;
+}
+
 @media (max-width: 900px) {
+  #wrapper html {
+    background: url(bg.jpg) no-repeat center center fixed;
+    background-size: none;
+  }
+  #wrapper #footer {
+    position: absolute;
+    margin-left: 30px;
+    bottom: 0%;
+    top: 1000px;
+  }
   #wrapper #drumMachine {
     width: 450px;
     height: 880px;
@@ -211,8 +235,15 @@ html {
 }
 
 @media (max-width: 500px) {
+  #wrapper #footer {
+    position: absolute;
+    max-width: 400px;
+    margin-left: 30px;
+    bottom: 0%;
+    top: 800px;
+  }
   #wrapper #drumMachine {
-    display: inline;
+    display: inline-block;
     position: absolute;
     top: 0;
     left: 0;
@@ -221,6 +252,7 @@ html {
     border: none;
     border-radius: 0;
     background: rgba(0, 0, 0, 0);
+    height: 800px;
   }
   #wrapper #drumMachine #padWrap {
     width: 300px;

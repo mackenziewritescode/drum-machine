@@ -280,6 +280,19 @@ class App extends Component {
             <audio ref={(ref) => (this.player = ref)} />
           </div>
         </div>
+        <footer id="footer">
+          <p>
+            This site was made by{" "}
+            <a className="footer-link" href="https://www.sunkenworld.com/about">
+              Mackenzie Charlton
+            </a>{" "}
+            in 2020 with{" "}
+            <a className="footer-link" href="https://reactjs.org">
+              React
+            </a>
+            .
+          </p>
+        </footer>
       </div>
     );
   }
