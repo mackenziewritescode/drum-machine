@@ -1,25 +1,38 @@
-import React, { Component } from "react"
-import "./App.css"
-import padsArr from "./padsArr"
-import tracksArr from "./tracksArr"
+import React, { Component } from "react";
+import "./App.css";
+import padsArr from "./padsArr";
+import tracksArr from "./tracksArr";
 
 class Volume extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+    this.volumeChange = this.volumeChange.bind(this);
   }
+
+  volumeChange(e) {
+    this.props.handleVolume(e.target.value);
+  }
+
   render() {
     return (
       <div id="volume">
         <h3>Volume</h3>
-        <p>---||---</p>
+        <input
+          id="volumeSlider"
+          type="range"
+          min={0}
+          max={100}
+          value={this.props.volumeVal}
+          onChange={this.volumeChange}
+        />
       </div>
-    )
+    );
   }
 }
 
 class PadDisplay extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   render() {
@@ -27,43 +40,84 @@ class PadDisplay extends Component {
     const activePadName =
       this.props.activePad === ""
         ? "------"
-        : padsArr.filter((pad) => pad.id === this.props.activePad)[0].name
+        : padsArr.filter((pad) => pad.id === this.props.activePad)[0].name;
 
     return (
       <div id="padDisplay">
         <h3>Most Recent Pad</h3>
         <p id="padDisplayWindow">{activePadName}</p>
       </div>
-    )
+    );
   }
 }
 
 class Track extends Component {
   constructor(props) {
-    super(props)
-    this.handleTrackClick = this.handleTrackClick.bind(this)
+    super(props);
+    this.handleTrackClick = this.handleTrackClick.bind(this);
   }
 
   handleTrackClick(id) {
-    this.props.handleTrack(id)
-    console.log(id)
+    this.props.handleTrack(id);
   }
 
   render() {
-    const item = this.props.item
+    const item = this.props.item;
+    const toggleColor =
+      item.id === this.props.activeTrack ? { background: "#ceff73" } : null;
 
     return (
       <div className="track" onClick={() => this.handleTrackClick(item.id)}>
-        <div className="trackToggle" />
+        <div className="trackToggle" style={toggleColor} />
         <p className="trackName">{this.props.item.name}</p>
       </div>
-    )
+    );
   }
 }
 
 class TrackPlayer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
+  }
+
+  componentDidUpdate(prevState) {
+    let player = this.props.player;
+    let volumePercent = this.props.volumeVal / 100;
+    // This sets the player's audio to match the state's active track
+    if (this.props.activeTrack !== prevState.activeTrack) {
+      let track = "";
+      switch (this.props.activeTrack) {
+        case "track0":
+          break;
+        case "track1":
+          track = tracksArr[1].audio;
+          break;
+        case "track2":
+          track = tracksArr[2].audio;
+          break;
+        case "track3":
+          track = tracksArr[3].audio;
+          break;
+        default:
+          break;
+      }
+      // this plays the track and loops it
+      if (track) {
+        player.src = track;
+        player.volume = volumePercent;
+        player.play();
+        player.loop = true;
+      }
+    }
+    // This stops the track if "None" is selected
+    if (this.props.playing !== prevState.playing) {
+      if (this.props.playing === false) {
+        player.pause();
+      }
+    }
+    if (this.props.volumeVal !== prevState.volumeVal) {
+      player.volume = volumePercent;
+    }
   }
 
   render() {
@@ -77,29 +131,28 @@ class TrackPlayer extends Component {
         activeTrack={this.props.activeTrack}
         handleTrack={this.props.handleTrack}
       />
-    ))
+    ));
     return (
       <div id="trackPlayer">
         <h3 id="trackTitle">Background Track</h3>
         {tracks}
       </div>
-    )
+    );
   }
 }
 
 class Pad extends Component {
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(id) {
-    this.props.handlePad(id)
-    console.log(id)
+    this.props.handlePad(id);
   }
 
   render() {
-    const item = this.props.item
+    const item = this.props.item;
 
     return (
       <div
@@ -110,13 +163,13 @@ class Pad extends Component {
         <p className="letter">{item.letter}</p>
         <p>{item.name}</p>
       </div>
-    )
+    );
   }
 }
 
 class PadWrap extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
   render() {
     const pads = padsArr.map((item) => (
@@ -128,123 +181,115 @@ class PadWrap extends Component {
         name={item.name}
         handlePad={this.props.handlePad}
       />
-    ))
+    ));
 
-    return <div id="padWrap">{pads}</div>
+    return <div id="padWrap">{pads}</div>;
   }
 }
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       activePad: "",
       activeTrack: "track0",
       playing: false,
       volumeVal: 100,
-    }
-    this.handlePad = this.handlePad.bind(this)
-    this.handleKey = this.handleKey.bind(this)
-    this.animatePad = this.animatePad.bind(this)
-    this.handleTrack = this.handleTrack.bind(this)
+    };
+    this.handlePad = this.handlePad.bind(this);
+    this.handleKey = this.handleKey.bind(this);
+    this.animatePad = this.animatePad.bind(this);
+    this.handleTrack = this.handleTrack.bind(this);
+    this.handleVolume = this.handleVolume.bind(this);
   }
 
   // when a key is pressed, run handleKey()
   componentDidMount() {
-    document.addEventListener("keydown", this.handleKey, false)
+    document.addEventListener("keydown", this.handleKey, false);
   }
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKey, false)
+    document.removeEventListener("keydown", this.handleKey, false);
   }
 
   // if the key pressed corresponds to a pad, set state and activate pad
   handleKey(event) {
-    console.log(event.key)
     for (let i = 0; i < padsArr.length; i++) {
       if (event.key === padsArr[i].letter) {
-        let track = new Audio(padsArr[i].audio)
-        track.play()
-        this.setState({ activePad: padsArr[i].id })
-        this.animatePad(this.state.activePad)
+        let track = new Audio(padsArr[i].audio);
+        track.play();
+        this.setState({ activePad: padsArr[i].id });
+        this.animatePad(this.state.activePad);
       }
     }
   }
 
   // if a pad is clicked, set state and activate pad
   handlePad(id) {
-    this.setState({ activePad: id })
-    this.animatePad(id)
+    let volumePercent = this.state.volumeVal / 100;
+    this.setState({ activePad: id });
+    this.animatePad(id);
     for (let i = 0; i < padsArr.length; i++) {
       if (padsArr[i].id === id) {
-        let track = new Audio(padsArr[i].audio)
-        track.play()
+        let padAudio = new Audio(padsArr[i].audio);
+        padAudio.volume = volumePercent;
+        padAudio.play();
       }
     }
   }
 
-  // change the color of the pad when activated. Duration specifies fade length.
+  // changes the color of the pad when activated. Duration specifies fade length.
   animatePad(id) {
     document
       .getElementById(id)
       .animate([{ background: "orangered" }, { background: "white" }], {
         duration: 400,
         iterations: 1,
-      })
+      });
   }
 
+  // tells the state if a track is playing or not
   handleTrack(id) {
-    this.setState({ activeTrack: id })
+    this.setState({ activeTrack: id });
+    if (id === "track0") {
+      this.setState({ playing: false });
+    } else {
+      this.setState({ playing: true });
+    }
   }
 
-  // styleTrack(id) {
-  //   document.getElementById(id).setAttribute("style", "background:yellow;");
-  // }
-
-  componentDidUpdate(prevState) {
-    if (this.state.activeTrack !== prevState.activeTrack) {
-      let track = ""
-      switch (this.state.activeTrack) {
-        case "track0":
-          break
-        case "track1":
-          track = tracksArr[1].audio
-          break
-        case "track2":
-          track = tracksArr[2].audio
-          break
-        case "track3":
-          track = tracksArr[3].audio
-          break
-        default:
-          break
-      }
-      if (track) {
-        this.player.src = track
-        this.player.play()
-      }
-    }
+  handleVolume(value) {
+    this.setState({ volumeVal: value });
   }
 
   render() {
     return (
       <div id="wrapper">
         <div id="drumMachine">
-          <PadWrap handlePad={this.handlePad} />
+          <PadWrap
+            handlePad={this.handlePad}
+            volumeVal={this.state.volumeVal}
+          />
           <div id="controlWrap">
             <h2 id="title">Drum Machine</h2>
             <TrackPlayer
               activeTrack={this.state.activeTrack}
               handleTrack={this.handleTrack}
               playing={this.state.playing}
+              player={this.player}
+              handlePlay={this.handlePlay}
+              volumeVal={this.state.volumeVal}
             />
             <PadDisplay activePad={this.state.activePad} />
-            <Volume volumeVal={this.state.volumeVal} />
+            <Volume
+              volumeVal={this.state.volumeVal}
+              handleVolume={this.handleVolume}
+            />
             <audio ref={(ref) => (this.player = ref)} />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
