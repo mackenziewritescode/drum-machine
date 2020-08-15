@@ -241,10 +241,13 @@ class App extends Component {
   animatePad(id) {
     document
       .getElementById(id)
-      .animate([{ background: "orangered" }, { background: "white" }], {
-        duration: 400,
-        iterations: 1,
-      });
+      .animate(
+        [{ background: "#85f7ff" }, { background: "rgba(255, 255, 255, 0.5)" }],
+        {
+          duration: 400,
+          iterations: 1,
+        }
+      );
   }
 
   // tells the state if a track is playing or not
@@ -270,7 +273,7 @@ class App extends Component {
             volumeVal={this.state.volumeVal}
           />
           <div id="controlWrap">
-            <h2 id="title">Drum Machine</h2>
+            <h2 id="title">Beat Machine</h2>
             <TrackPlayer
               activeTrack={this.state.activeTrack}
               handleTrack={this.handleTrack}

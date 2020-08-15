@@ -1,6 +1,6 @@
-import chillSynth from "./audio/Chill Synth.wav"
-import loFiDream from "./audio/Lo-Fi Dream.wav"
-import mellowGroove from "./audio/Mellow Groove.wav"
+import track1 from "./audio/track1.wav";
+import track2 from "./audio/track2.wav";
+import track3 from "./audio/track3.wav";
 
 const tracksArr = [
   {
@@ -12,21 +12,21 @@ const tracksArr = [
   {
     index: 1,
     id: "track1",
-    name: "Chill Synth",
-    audio: chillSynth,
+    name: "Star Dust",
+    audio: track1,
   },
   {
     index: 2,
     id: "track2",
     name: "Lo-Fi Dream",
-    audio: loFiDream,
+    audio: track2,
   },
   {
     index: 3,
     id: "track3",
-    name: "Mellow Groove",
-    audio: mellowGroove,
+    name: "Car Chase",
+    audio: track3,
   },
-]
+];
 
-export default tracksArr
+export default tracksArr;
