@@ -258,14 +258,11 @@ class App extends Component {
   render() {
     return (
       <div id="wrapper">
-        <div className="portfolio">
-          <p
-            className="portfolio-text"
-            href="https://www.sunkenworld.com/about"
-          >
+        <a className="portfolio" href="http://www.sunkenworld.com/about/">
+          <p className="portfolio-text">
             <RiArrowGoBackLine /> Back to portfolio
           </p>
-        </div>
+        </a>
         <div id="drumMachine">
           <PadWrap
             handlePad={this.handlePad}
@@ -292,7 +289,7 @@ class App extends Component {
         <footer id="footer">
           <p>
             This site was made by{" "}
-            <a className="footer-link" href="https://www.sunkenworld.com/about">
+            <a className="footer-link" href="http://www.sunkenworld.com/about/">
               Mackenzie Charlton
             </a>{" "}
             in 2020 with{" "}

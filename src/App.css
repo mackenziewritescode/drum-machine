@@ -41,6 +41,7 @@ html {
   font-size: 14px;
   vertical-align: middle;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2px;
   padding-left: 10px;
   -webkit-touch-callout: none;
