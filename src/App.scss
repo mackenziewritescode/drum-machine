@@ -23,6 +23,42 @@ html {
   h3 {
     font-size: 22px;
   }
+  .portfolio {
+    position: absolute;
+    top: -7px;
+    left: 0;
+    display: flex;
+    z-index: 99;
+    height: 40px;
+    width: 230px;
+    color: white;
+    font-weight: 400;
+    background: rgba(67, 149, 255, 0.6);
+    border-radius: 0 0 40px 0;
+    -moz-border-radius: 0 0 40px 0;
+    -webkit-border-radius: 0 0 40px 0;
+    font-style: italic;
+    font-size: 14px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+  }
+
+  .portfolio:hover {
+    background: rgba(0, 255, 128, 0.6);
+    color: white;
+  }
+  .portfolio:active {
+    background: white;
+    color: #ff00ea;
+  }
 
   #drumMachine {
     display: flex;
@@ -186,11 +222,13 @@ html {
 
   @media (max-width: 900px) {
     html {
-      background: url(bg.jpg) no-repeat center center fixed;
+      background: none;
       -webkit-background-size: none;
       -moz-background-size: none;
       -o-background-size: none;
       background-size: none;
+      //background-image: url(bg.jpg);
+      background-color: black;
     }
 
     #footer {
@@ -203,7 +241,7 @@ html {
       width: 450px;
       height: 880px;
       display: inline-block;
-      top: 460px;
+      top: 490px;
 
       #padWrap {
         margin: 25px;
@@ -226,7 +264,7 @@ html {
     #drumMachine {
       display: inline-block;
       position: absolute;
-      top: 0;
+      top: 30px;
       left: 0;
       transform: translate(0, 0);
       border: none;

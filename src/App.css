@@ -21,6 +21,50 @@ html {
   font-size: 22px;
 }
 
+#wrapper .portfolio {
+  position: absolute;
+  top: -7px;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 99;
+  height: 40px;
+  width: 230px;
+  color: white;
+  font-weight: 400;
+  background: rgba(67, 149, 255, 0.6);
+  border-radius: 0 0 40px 0;
+  -moz-border-radius: 0 0 40px 0;
+  -webkit-border-radius: 0 0 40px 0;
+  font-style: italic;
+  font-size: 14px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-left: 10px;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+#wrapper .portfolio:hover {
+  background: rgba(0, 255, 128, 0.6);
+  color: white;
+}
+
+#wrapper .portfolio:active {
+  background: white;
+  color: #ff00ea;
+}
+
 #wrapper #drumMachine {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -210,8 +254,9 @@ html {
 
 @media (max-width: 900px) {
   #wrapper html {
-    background: url(bg.jpg) no-repeat center center fixed;
+    background: none;
     background-size: none;
+    background-color: black;
   }
   #wrapper #footer {
     position: absolute;
@@ -223,7 +268,7 @@ html {
     width: 450px;
     height: 880px;
     display: inline-block;
-    top: 460px;
+    top: 490px;
   }
   #wrapper #drumMachine #padWrap {
     margin: 25px;
@@ -245,7 +290,7 @@ html {
   #wrapper #drumMachine {
     display: inline-block;
     position: absolute;
-    top: 0;
+    top: 30px;
     left: 0;
     -webkit-transform: translate(0, 0);
             transform: translate(0, 0);

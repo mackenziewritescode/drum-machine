@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import padsArr from "./padsArr";
 import tracksArr from "./tracksArr";
+import { RiArrowGoBackLine } from "react-icons/ri";
 
 class Volume extends Component {
   constructor(props) {
@@ -257,6 +258,14 @@ class App extends Component {
   render() {
     return (
       <div id="wrapper">
+        <div className="portfolio">
+          <p
+            className="portfolio-text"
+            href="https://www.sunkenworld.com/about"
+          >
+            <RiArrowGoBackLine /> Back to portfolio
+          </p>
+        </div>
         <div id="drumMachine">
           <PadWrap
             handlePad={this.handlePad}
