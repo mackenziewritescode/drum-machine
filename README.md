@@ -54,3 +54,9 @@ handlePad(id) {
 }
 ```
 Now that we're back in the main component, we have a lot of freedom with what we can do with this data. This is particularly useful because this one function handles both the clicking of the pad buttons, but also the key press associated with each pad! Here we apply the current volume to the sound file and play it back, as well as save the pad to state so we can keep track of the last played pad.
+
+***
+
+That's just a quick look at one of the many things going on in this deceptively simple project. There's also event listeners for keys associated with pads, a TrackPlayer component that uses componentDidUpdate() to control the background audio track, a window for displaying the current pad using the state property activePad, and a global volume slider sets a state property volumeVal. If you want to see how everything works, have a look at the files in the `src` folder.
+
+Please check out my portfolio at https://www.sunkenworld.com/ if you want to see more of my work. Thanks for reading!
