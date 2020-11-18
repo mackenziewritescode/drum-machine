@@ -53,3 +53,4 @@ handlePad(id) {
   }
 }
 ```
+Now that we're back in the main component, we have a lot of freedom with what we can do with this data. This is particularly useful because this one function handles both the clicking of the pad buttons, but also the key press associated with each pad! Here we apply the current volume to the sound file and play it back, as well as save the pad to state so we can keep track of the last played pad.
