@@ -2,12 +2,13 @@
 
 Check it out [here](https://www.sunkenworld.com/drum-machine). If you want to run it locally: clone the repository, run `npm install` and then `npm run start`.
 
-This is a little drum machine made using React and styled with SCSS. It is composed of nine pads that can be activated by either clicking on them or pressing their corresponding keys, a background track player that plays independent, looping tracks, and a volume slider that adjusts the volume of both the pads and the background tracks. It was written without React hooks as an exercise to familiarize myself with older conventions.
+This is a little drum machine made using React and styled with SCSS. This particular project was written using legacy React with Class Components and without React Hooks. This was done simply as an exercise to familiarize myself with the older React conventions, so that I could properly interpret older code and better understand the evolution of the library.
 
-This project has quite a few components, but only one of them controls the state: the main App component. This stores all of the saved data in one place and keeps
-everything organized and bug-free. The App component passes its state through props to all of its children components.
+The app is composed of nine pads that can be activated by either clicking on them or pressing their corresponding keys, a background track player that plays independent, looping tracks, and a volume slider that adjusts the volume of both the pads and the background tracks.
 
-Let's have a look at the drum pads, which is made up of a PadWrap component and contains nine Pad components; one for each drum pad. PadWrap uses an array containing the audio and properties of each pad (PadArr) and maps them to individual Pad components, which are then returned. It also passes the event handler from App:
+This project has quite a few components, but only one of them controls the state: the main DrumMachine component. This stores all of the saved data in one place and keeps everything organized and bug-free. The DrumMachine component passes its state through props to all of its children components.
+
+Let's have a look at the drum pads, which is made up of a PadWrap component and contains nine Pad components; one for each drum pad. PadWrap uses an array containing the audio and properties of each pad (PadArr) and maps them to individual Pad components, which are then returned. It also passes the event handler from DrumMachine:
 ```
 function PadWrap(props) {
   const pads = padsArr.map((item) => (
@@ -38,7 +39,7 @@ handleClick(id) {
   this.props.handlePad(id);
 }
 ```
-... which runs the handlePad function defined in the App component:
+... which runs the handlePad function defined in the DrumMachine component:
 ```
 handlePad(id) {
   let volumePercent = this.state.volumeVal / 100;
