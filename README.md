@@ -1,6 +1,6 @@
 # Beat Machine
 
-Check it out [here](https://www.sunkenworld.com/drum-machine).
+Check it out [here](https://www.sunkenworld.com/drum-machine). If you want to run it locally: clone the repository, run `npm install` and then `npm run start`.
 
 This is a little drum machine made using React and styled with SCSS. It is composed of nine pads that can be activated by either clicking on them or pressing their corresponding keys, a background track player that plays independent, looping tracks, and a volume slider that adjusts the volume of both the pads and the background tracks. It was written without React hooks as an exercise to familiarize myself with older conventions.
 
@@ -57,6 +57,6 @@ Now that we're back in the main component, we have a lot of freedom with what we
 
 ***
 
-That's just a quick look at one of the many things going on in this deceptively simple project. There's also event listeners for keys associated with pads, a TrackPlayer component that uses componentDidUpdate() to control the background audio track, a window for displaying the current pad using the state property activePad, and a volume slider sets a state property volumeVal. If you want to see how everything works, have a look at `App.js` in the `src` folder.
+That's just a quick look at one of the many things going on in this deceptively simple project. There's also event listeners for keys associated with pads, a TrackPlayer component that uses componentDidUpdate() to control the background audio track, a window for displaying the current pad using the state property activePad, and a volume slider sets a state property volumeVal. If you want to see how everything works, have a look at `src/components/` and `src/styles/`.
 
 Please check out my portfolio at https://www.sunkenworld.com/ if you want to see more of my work. Thanks for reading!
