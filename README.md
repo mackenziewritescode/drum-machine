@@ -2,7 +2,7 @@
 
 Check it out [here](https://www.sunkenworld.com/drum-machine). If you want to run it locally: clone the repository, run `npm install` and then `npm run start`.
 
-This is a little drum machine made using React and styled with SCSS. This particular project was written using legacy React with Class Components and without React Hooks. This was done simply as an exercise to familiarize myself with the older React conventions, so that I could properly interpret older code and better understand the evolution of the library.
+This little drum machine is a personal project made using React and styled with SCSS. This particular project was written using legacy React with Class Components and without React Hooks. This was done simply as an exercise to familiarize myself with the older React conventions, so that I could properly interpret older code and better understand the evolution of the library.
 
 The app is composed of nine pads that can be activated by either clicking on them or pressing their corresponding keys, a background track player that plays independent, looping tracks, and a volume slider that adjusts the volume of both the pads and the background tracks.
 
